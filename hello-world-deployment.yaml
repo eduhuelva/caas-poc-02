@@ -17,7 +17,7 @@ kind: Deployment
 metadata:
   name: hello-world-02
 spec:
-  replicas: 1 
+  replicas: 4 
   selector:
     matchLabels:
       app: hello-world-02
