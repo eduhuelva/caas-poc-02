@@ -27,7 +27,7 @@ spec:
         app: hello-world-02
     spec:
       containers:
-      - name: hello-world-02
+      - name: hello-world
         image: harbor.frontedge.net/poc-caas/hello-kubernetes
         ports:
         - containerPort: 8080
