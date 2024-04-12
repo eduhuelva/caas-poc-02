@@ -17,7 +17,7 @@ kind: Deployment
 metadata:
   name: hello-world-02
 spec:
-  replicas: 2 
+  replicas: 4 
   selector:
     matchLabels:
       app: hello-world-02
@@ -33,7 +33,7 @@ spec:
         - containerPort: 8080
         env:
         - name: MESSAGE
-          value: Pooc CaaS!
+          value: Pooc CaaS Kubernetes!
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
