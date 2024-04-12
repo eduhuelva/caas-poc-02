@@ -17,7 +17,7 @@ kind: Deployment
 metadata:
   name: hello-world-03
 spec:
-  replicas: 4
+  replicas: 3
   selector:
     matchLabels:
       app: hello-world-03
@@ -33,7 +33,7 @@ spec:
         - containerPort: 8080
         env:
         - name: MESSAGE
-          value: I just deployed this on Kubernetes!
+          value: I just deployed this on Kubernetes!  Hola
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
