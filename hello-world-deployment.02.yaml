@@ -33,7 +33,7 @@ spec:
         - containerPort: 8080
         env:
         - name: MESSAGE
-          value: Pooc CaaS Kubernetes hola!
+          value: Pooc CaaS Kubernetes!
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
