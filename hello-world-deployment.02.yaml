@@ -34,6 +34,13 @@ spec:
         env:
         - name: MESSAGE
           value: Pooc CaaS Kubernetes!
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "200m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -54,4 +61,23 @@ spec:
         pathType: Prefix
 status:
   loadBalancer: {}
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: autoscaler-poc-caas-02
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: hello-world-02
+  minReplicas: 1
+  maxReplicas: 6
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      target:
+        type: Utilization
+        averageUtilization: 50
 ---
