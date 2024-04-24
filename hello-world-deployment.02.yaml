@@ -1,4 +1,17 @@
 ---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: pvc-caas-poc
+  namespace: poc-caas-02
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Gi
+  storageClassName: ontap-nfs
+---
 # hello-kubernetes.custom-message.yaml
 #service
 apiVersion: v1
