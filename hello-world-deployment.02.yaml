@@ -1,5 +1,6 @@
 ---
 # hello-kubernetes.custom-message.yaml
+#service
 apiVersion: v1
 kind: Service
 metadata:
@@ -12,6 +13,7 @@ spec:
   selector:
     app: hello-world-02
 ---
+#Deployment
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -26,6 +28,11 @@ spec:
       labels:
         app: hello-world-02
     spec:
+      #persistent volume
+      volumes:
+      - name: pv-caas-poc
+        persistentVolumeClaim:
+          claimName: pvc-caas-poc
       containers:
       - name: hello-world-test
         image: harbor.frontedge.net/poc-caas-05/hello-kubernetes
@@ -34,7 +41,11 @@ spec:
         env:
         - name: MESSAGE
           value: Pooc CaaS Kubernetes!
+        volumeMounts:
+        - mountPath: /data
+          name: pv-caas-poc
         resources:
+        #resources to autoscaler
           requests:
             memory: "64Mi"
             cpu: "200m"
@@ -42,6 +53,7 @@ spec:
             memory: "128Mi"
             cpu: "500m"
 ---
+#ingress
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -62,6 +74,7 @@ spec:
 status:
   loadBalancer: {}
 ---
+#Autoscaler
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
