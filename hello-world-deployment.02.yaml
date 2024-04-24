@@ -2,7 +2,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: pvc-caas-poc
+  name: pvc-caas-poc-02
   namespace: poc-caas-02
 spec:
   accessModes:
@@ -45,7 +45,7 @@ spec:
       volumes:
       - name: pv-caas-poc
         persistentVolumeClaim:
-          claimName: pvc-caas-poc
+          claimName: pvc-caas-poc-02
       containers:
       - name: hello-world-test
         image: harbor.frontedge.net/poc-caas-05/hello-kubernetes
