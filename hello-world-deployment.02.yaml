@@ -28,7 +28,7 @@ spec:
     spec:
       containers:
       - name: hello-world-test
-        image: harbor.frontedge.net/poc-caas/hello-kubernetes
+        image: harbor.frontedge.net/poc-caas-05/hello-kubernetes
         ports:
         - containerPort: 8080
         env:
