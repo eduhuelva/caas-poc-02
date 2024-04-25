@@ -48,7 +48,7 @@ spec:
           claimName: pvc-caas-poc-02
       containers:
       - name: hello-world-test
-        image: harbor.frontedge.net/poc-caas-05/hello-kubernetes
+        image: harbor.frontedge.net/poc-caas-fujitsu/hello-kubernetes-fujitsu
         ports:
         - containerPort: 8080
         env:
